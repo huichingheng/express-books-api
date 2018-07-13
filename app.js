@@ -9,7 +9,9 @@ const booksRouter = require("./routes/books");
 const authorsRouter = require("./routes/authors")
 const Author = require("./models/author")
 
-mongoose.connect("mongodb://localhost/jumpstart");
+const mongodbURI = process.env.MONGODB_URI || "mongodb://localhost/jumpstart"
+
+mongoose.connect(mongodbURI);
 const db = mongoose.connection;
 db.on("error", error => {
   console.log("An error occur", error);
