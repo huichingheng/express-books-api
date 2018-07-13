@@ -6,10 +6,10 @@ const bodyParser = require("body-parser");
 
 const index = require("./routes/index");
 const booksRouter = require("./routes/books");
-const authorsRouter = require("./routes/authors")
-const Author = require("./models/author")
+const authorsRouter = require("./routes/authors");
+const Author = require("./models/author");
 
-const mongodbURI = process.env.MONGODB_URI || "mongodb://localhost/jumpstart"
+const mongodbURI = process.env.MONGODB_URI || "mongodb://localhost/jumpstart";
 
 mongoose.connect(mongodbURI);
 const db = mongoose.connection;
@@ -24,9 +24,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/", index);
-app.use("/books", books);
 
-authorsRouter(app)
-booksRouter(app)
+authorsRouter(app);
+booksRouter(app);
 
 module.exports = app;
